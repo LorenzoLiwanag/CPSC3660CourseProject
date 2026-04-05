@@ -1,0 +1,157 @@
+﻿erDiagram
+    VEHICLE {
+        int vehicle_id PK
+        string make
+        string model
+        int year
+        string color
+        int miles
+        string condition
+        decimal book_price
+        string style
+        string interior_color
+        string status
+    }
+
+    PURCHASE {
+        int purchase_id PK
+        int vehicle_id FK
+        int buyer_id FK
+        int seller_id FK
+        date purchase_date
+        string location
+        boolean is_auction
+        decimal price_paid
+    }
+
+    SELLER {
+        int seller_id PK
+        string seller_name
+        string seller_type
+        string phone
+        string address
+        string city
+        string state
+        string zip
+    }
+
+    BUYER {
+        int buyer_id PK
+        string first_name
+        string last_name
+        string phone
+        string email
+    }
+
+    REPAIR {
+        int repair_id PK
+        int purchase_id FK
+        int vehicle_id FK
+        int problem_number
+        string problem_description
+        decimal estimated_repair_cost
+        decimal actual_repair_cost
+    }
+
+    CUSTOMER {
+        int customer_id PK
+        string first_name
+        string last_name
+        string phone
+        string address
+        string city
+        string state
+        string zip
+        string gender
+        date date_of_birth
+        string tax_payer_id
+        int number_of_late_payments
+        decimal average_days_late
+    }
+
+    EMPLOYMENT_HISTORY {
+        int employment_id PK
+        int customer_id FK
+        string employer
+        string title
+        string supervisor_name
+        string supervisor_phone
+        string employer_address
+        date start_date
+    }
+
+    SALESPERSON {
+        int salesperson_id PK
+        string first_name
+        string last_name
+        string phone
+    }
+
+    SALE {
+        int sale_id PK
+        int vehicle_id FK
+        int customer_id FK
+        int salesperson_id FK
+        date sale_date
+        decimal total_due
+        decimal down_payment
+        decimal financed_amount
+        decimal sale_price
+        decimal salesperson_commission
+    }
+
+    WARRANTY_POLICY {
+        int policy_id PK
+        string policy_name
+        string component_type
+        string coverage_description
+        int standard_length
+        decimal standard_cost
+        decimal standard_deductible
+    }
+
+    WARRANTY_SALE {
+        int warranty_sale_id PK
+        int sale_id FK
+        int policy_id FK
+        int vehicle_id FK
+        int customer_id FK
+        int salesperson_id FK
+        date warranty_sale_date
+        date warranty_start_date
+        int warranty_length
+        decimal deductible
+        decimal total_cost
+        decimal monthly_cost
+        boolean paid_upfront_flag
+    }
+
+    PAYMENT {
+        int payment_id PK
+        int customer_id FK
+        int sale_id FK
+        int warranty_sale_id FK
+        date payment_date
+        date due_date
+        date paid_date
+        decimal amount
+        string bank_account
+    }
+
+    SELLER ||--o{ PURCHASE : supplies
+    BUYER ||--o{ PURCHASE : makes
+    VEHICLE ||--|| PURCHASE : is_acquired_in
+    PURCHASE ||--o{ REPAIR : has
+    VEHICLE ||--o{ REPAIR : requires
+    CUSTOMER ||--o{ EMPLOYMENT_HISTORY : has
+    VEHICLE o|--|| SALE : is_sold_in
+    CUSTOMER ||--o{ SALE : makes
+    SALESPERSON ||--o{ SALE : handles
+    WARRANTY_POLICY ||--o{ WARRANTY_SALE : defines
+    SALE ||--o{ WARRANTY_SALE : includes
+    VEHICLE ||--o{ WARRANTY_SALE : covered_by
+    CUSTOMER ||--o{ WARRANTY_SALE : purchases
+    SALESPERSON ||--o{ WARRANTY_SALE : sells
+    CUSTOMER ||--o{ PAYMENT : makes
+    SALE ||--o{ PAYMENT : receives
+    WARRANTY_SALE o|--o{ PAYMENT : may_receive
