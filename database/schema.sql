@@ -1,7 +1,6 @@
 -- schema.sql
 -- Database schema for Lethbridge JonesAuto
 
--- Create the database
 CREATE DATABASE IF NOT EXISTS `jonesauto_db`;
 USE `jonesauto_db`;
 
