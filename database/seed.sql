@@ -95,6 +95,17 @@ INSERT INTO `Salesperson` (`first_name`, `last_name`, `phone`) VALUES
 ('Aaron', 'Baker', '403-555-3019'),
 ('Beth', 'Carter', '403-555-3020');
 
+-- Warranty Policies
+INSERT INTO `Warranty_Policy` (`policy_name`, `component_type`, `coverage_description`, `standard_length`, `standard_cost`, `standard_deductible`) VALUES
+('Basic Powertrain', 'Powertrain', 'Covers engine, transmission, and drivetrain components', 36, 599.00, 100.00),
+('Extended Powertrain', 'Powertrain', 'Extended coverage for powertrain with higher mileage limits', 60, 999.00, 150.00),
+('Comprehensive Coverage', 'Full Vehicle', 'Bumper-to-bumper coverage including all major systems', 36, 1499.00, 200.00),
+('Premium Bumper-to-Bumper', 'Full Vehicle', 'Premium coverage with lowest deductible for peace of mind', 48, 1999.00, 50.00),
+('Engine Protection Plan', 'Engine', 'Specialized engine and internal component protection', 60, 799.00, 100.00),
+('Transmission Protection', 'Transmission', 'Complete transmission repair and replacement coverage', 60, 899.00, 150.00),
+('Roadside Assistance', 'Services', 'Includes towing, lockout, and roadside emergency services', 24, 199.00, 0.00),
+('Wear & Tear Coverage', 'Maintenance', 'Covers wear items like brakes, tires, and batteries', 36, 449.00, 50.00);
+
 -- Vehicles
 INSERT INTO `Vehicle` (`make`, `model`, `year`, `color`, `miles`, `condition`, `book_price`, `style`, `interior_color`, `status`) VALUES
 ('Toyota', 'Camry', 2015, 'Silver', 85000, 'Good', 13500.00, 'Sedan', 'Black', 'Sold'),
@@ -117,6 +128,14 @@ INSERT INTO `Vehicle` (`make`, `model`, `year`, `color`, `miles`, `condition`, `
 ('GMC', 'Sierra', 2019, 'White', 35000, 'Excellent', 28000.00, 'Truck', 'Beige', 'Sold'),
 ('Chevrolet', 'Silverado', 2016, 'Black', 70000, 'Good', 19500.00, 'Truck', 'Black', 'Sold'),
 ('Ford', 'F-150', 2018, 'Blue', 50000, 'Excellent', 25000.00, 'Truck', 'Gray', 'Sold');
+
+-- Additional available vehicles for inventory
+INSERT INTO `Vehicle` (`make`, `model`, `year`, `color`, `miles`, `condition`, `book_price`, `style`, `interior_color`, `status`) VALUES
+('Honda', 'Accord', 2017, 'Silver', 62000, 'Good', 15500.00, 'Sedan', 'Black', 'Available'),
+('Toyota', 'RAV4', 2019, 'White', 35000, 'Excellent', 23000.00, 'SUV', 'Beige', 'Available'),
+('Chevrolet', 'Equinox', 2018, 'Gray', 55000, 'Good', 16800.00, 'SUV', 'Black', 'Available'),
+('Ford', 'Fusion', 2016, 'Blue', 78000, 'Fair', 10500.00, 'Sedan', 'Gray', 'Available'),
+('VW', 'Jetta', 2017, 'Red', 68000, 'Good', 12500.00, 'Sedan', 'Black', 'Available');
 
 -- Purchases
 INSERT INTO `Purchase` (`vehicle_id`, `buyer_id`, `seller_id`, `purchase_date`, `location`, `is_auction`, `price_paid`) VALUES
@@ -163,6 +182,52 @@ INSERT INTO `Repair` (`purchase_id`, `vehicle_id`, `problem_number`, `problem_de
 (18, 18, 1, 'Radiator repair', 400.00, 410.00),
 (19, 19, 1, 'Alternator replacement', 350.00, 360.00),
 (20, 20, 1, 'Muffler repair', 150.00, 155.00);
+
+-- Sale (JonesAuto selling vehicles to customers)
+INSERT INTO `Sale` (`vehicle_id`, `customer_id`, `salesperson_id`, `sale_date`, `total_due`, `down_payment`, `financed_amount`, `sale_price`, `salesperson_commission`) VALUES
+(1, 1, 1, '2024-01-15', 15000.00, 3000.00, 12000.00, 14000.00, 700.00),
+(2, 2, 2, '2024-02-20', 13500.00, 2700.00, 10800.00, 13000.00, 650.00),
+(3, 3, 3, '2024-03-25', 12000.00, 2400.00, 9600.00, 11500.00, 575.00),
+(4, 4, 4, '2024-04-10', 16000.00, 3200.00, 12800.00, 15500.00, 775.00),
+(5, 5, 5, '2024-05-15', 15500.00, 3100.00, 12400.00, 15000.00, 750.00),
+(6, 6, 6, '2024-06-18', 28000.00, 5600.00, 22400.00, 27000.00, 1350.00),
+(7, 7, 7, '2024-07-22', 31000.00, 6200.00, 24800.00, 30000.00, 1500.00),
+(8, 8, 8, '2024-08-28', 24000.00, 4800.00, 19200.00, 23500.00, 1175.00),
+(9, 9, 9, '2024-10-02', 12000.00, 2400.00, 9600.00, 11500.00, 575.00),
+(10, 10, 10, '2024-10-08', 11500.00, 2300.00, 9200.00, 11000.00, 550.00),
+(11, 11, 11, '2024-11-12', 21000.00, 4200.00, 16800.00, 20500.00, 1025.00),
+(12, 12, 12, '2024-12-18', 17500.00, 3500.00, 14000.00, 17000.00, 850.00),
+(13, 13, 13, '2025-01-22', 23000.00, 4600.00, 18400.00, 22000.00, 1100.00),
+(14, 14, 14, '2025-02-28', 19500.00, 3900.00, 15600.00, 19000.00, 950.00),
+(15, 15, 15, '2025-03-31', 18000.00, 3600.00, 14400.00, 17500.00, 875.00),
+(16, 16, 16, '2025-04-08', 24000.00, 4800.00, 19200.00, 23000.00, 1150.00),
+(17, 17, 17, '2025-05-12', 31000.00, 6200.00, 24800.00, 30000.00, 1500.00),
+(18, 18, 18, '2025-06-18', 20500.00, 4100.00, 16400.00, 20000.00, 1000.00),
+(19, 19, 19, '2025-07-22', 27500.00, 5500.00, 22000.00, 26000.00, 1300.00),
+(20, 20, 20, '2025-08-28', 10000.00, 2000.00, 8000.00, 9500.00, 475.00);
+
+-- Warranty_Sale (Warranty policies sold with vehicles)
+INSERT INTO `Warranty_Sale` (`sale_id`, `policy_id`, `vehicle_id`, `customer_id`, `salesperson_id`, `warranty_sale_date`, `warranty_start_date`, `warranty_length`, `deductible`, `total_cost`, `monthly_cost`, `paid_upfront_flag`) VALUES
+(1, 1, 1, 1, 1, '2024-01-15', '2024-01-15', 36, 100.00, 599.00, 16.64, 1),
+(2, 2, 2, 2, 2, '2024-02-20', '2024-02-20', 60, 150.00, 999.00, 16.65, 1),
+(3, 3, 3, 3, 3, '2024-03-25', '2024-03-25', 36, 200.00, 1499.00, 41.64, 1),
+(4, 4, 4, 4, 4, '2024-04-10', '2024-04-10', 48, 50.00, 1999.00, 41.65, 1),
+(5, 5, 5, 5, 5, '2024-05-15', '2024-05-15', 60, 100.00, 799.00, 13.32, 1),
+(6, 6, 6, 6, 6, '2024-06-18', '2024-06-18', 60, 150.00, 899.00, 14.98, 1),
+(7, 7, 7, 7, 7, '2024-07-22', '2024-07-22', 24, 0.00, 199.00, 8.29, 1),
+(8, 8, 8, 8, 8, '2024-08-28', '2024-08-28', 36, 50.00, 449.00, 12.47, 1),
+(9, 1, 9, 9, 9, '2024-10-02', '2024-10-02', 36, 100.00, 599.00, 16.64, 1),
+(10, 2, 10, 10, 10, '2024-10-08', '2024-10-08', 60, 150.00, 999.00, 16.65, 1),
+(11, 3, 11, 11, 11, '2024-11-12', '2024-11-12', 36, 200.00, 1499.00, 41.64, 1),
+(12, 4, 12, 12, 12, '2024-12-18', '2024-12-18', 48, 50.00, 1999.00, 41.65, 1),
+(13, 5, 13, 13, 13, '2025-01-22', '2025-01-22', 60, 100.00, 799.00, 13.32, 1),
+(14, 6, 14, 14, 14, '2025-02-28', '2025-02-28', 60, 150.00, 899.00, 14.98, 1),
+(15, 7, 15, 15, 15, '2025-03-31', '2025-03-31', 24, 0.00, 199.00, 8.29, 1),
+(16, 8, 16, 16, 16, '2025-04-08', '2025-04-08', 36, 50.00, 449.00, 12.47, 1),
+(17, 1, 17, 17, 17, '2025-05-12', '2025-05-12', 36, 100.00, 599.00, 16.64, 1),
+(18, 2, 18, 18, 18, '2025-06-18', '2025-06-18', 60, 150.00, 999.00, 16.65, 1),
+(19, 3, 19, 19, 19, '2025-07-22', '2025-07-22', 36, 200.00, 1499.00, 41.64, 1),
+(20, 4, 20, 20, 20, '2025-08-28', '2025-08-28', 48, 50.00, 1999.00, 41.65, 1);
 
 -- Payment
 INSERT INTO `Payment` (`customer_id`, `sale_id`, `warranty_sale_id`, `payment_date`, `due_date`, `paid_date`, `amount`, `bank_account`) VALUES
