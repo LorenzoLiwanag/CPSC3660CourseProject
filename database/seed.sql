@@ -1,9 +1,5 @@
--- seed.sql
--- Sample data for Lethbridge JonesAuto
-
 USE `jonesauto_db`;
 
--- Sellers
 INSERT INTO `Seller` (`seller_name`, `seller_type`, `phone`, `address`, `city`, `state`, `zip`) VALUES
 ('Lethbridge Auto Traders', 'Dealer', '403-555-0101', '111 Main St', 'Lethbridge', 'Alberta', 'T1H 1A1'),
 ('Prairie Car Auctions', 'Auction', '403-555-0202', '222 Market Ave', 'Lethbridge', 'Alberta', 'T1K 2B2'),
@@ -26,7 +22,6 @@ INSERT INTO `Seller` (`seller_name`, `seller_type`, `phone`, `address`, `city`, 
 ('Prairie Classics', 'Dealer', '403-555-1919', '1919 Prairie Rd', 'Lethbridge', 'Alberta', 'T1H 9S9'),
 ('Lethbridge Auctions', 'Auction', '403-555-2020', '2020 Lethbridge Ave', 'Lethbridge', 'Alberta', 'T1K 0T0');
 
--- Buyers
 INSERT INTO `Buyer` (`first_name`, `last_name`, `phone`, `email`) VALUES
 ('Aaron', 'Brown', '403-555-1001', 'aaron.brown@example.com'),
 ('Beth', 'Carlson', '403-555-1002', 'beth.carlson@example.com'),
@@ -49,7 +44,6 @@ INSERT INTO `Buyer` (`first_name`, `last_name`, `phone`, `email`) VALUES
 ('Tyler', 'Upton', '403-555-1019', 'tyler.upton@example.com'),
 ('Uma', 'Vargas', '403-555-1020', 'uma.vargas@example.com');
 
--- Customers
 INSERT INTO `Customer` (`first_name`, `last_name`, `phone`, `address`, `city`, `state`, `zip`, `gender`, `date_of_birth`, `tax_payer_id`, `number_of_late_payments`, `average_days_late`) VALUES
 ('David', 'Evans', '403-555-2001', '10 College Way', 'Lethbridge', 'Alberta', 'T1K 4D4', 'Male', '1988-02-15', 'TX123456', 1, 2.00),
 ('Emily', 'Foster', '403-555-2002', '25 University Dr', 'Lethbridge', 'Alberta', 'T1K 5E5', 'Female', '1992-07-08', 'TX234567', 0, 0.00),
@@ -72,7 +66,6 @@ INSERT INTO `Customer` (`first_name`, `last_name`, `phone`, `address`, `city`, `
 ('Victoria', 'Wilson', '403-555-2019', '280 River Ln', 'Lethbridge', 'Alberta', 'T1K 2V2', 'Female', '1986-09-09', 'TX901234', 0, 0.00),
 ('Walter', 'Xavier', '403-555-2020', '295 Mountain Ave', 'Lethbridge', 'Alberta', 'T1K 3W3', 'Male', '1974-11-26', 'TX012345', 1, 4.50);
 
--- Salespersons
 INSERT INTO `Salesperson` (`first_name`, `last_name`, `phone`) VALUES
 ('Henry', 'Irwin', '403-555-3001'),
 ('Isla', 'Jones', '403-555-3002'),
@@ -95,7 +88,6 @@ INSERT INTO `Salesperson` (`first_name`, `last_name`, `phone`) VALUES
 ('Aaron', 'Baker', '403-555-3019'),
 ('Beth', 'Carter', '403-555-3020');
 
--- Warranty Policies
 INSERT INTO `Warranty_Policy` (`policy_name`, `component_type`, `coverage_description`, `standard_length`, `standard_cost`, `standard_deductible`) VALUES
 ('Basic Powertrain', 'Powertrain', 'Covers engine, transmission, and drivetrain components', 36, 599.00, 100.00),
 ('Extended Powertrain', 'Powertrain', 'Extended coverage for powertrain with higher mileage limits', 60, 999.00, 150.00),
@@ -106,7 +98,6 @@ INSERT INTO `Warranty_Policy` (`policy_name`, `component_type`, `coverage_descri
 ('Roadside Assistance', 'Services', 'Includes towing, lockout, and roadside emergency services', 24, 199.00, 0.00),
 ('Wear & Tear Coverage', 'Maintenance', 'Covers wear items like brakes, tires, and batteries', 36, 449.00, 50.00);
 
--- Vehicles
 INSERT INTO `Vehicle` (`make`, `model`, `year`, `color`, `miles`, `condition`, `book_price`, `style`, `interior_color`, `status`) VALUES
 ('Toyota', 'Camry', 2015, 'Silver', 85000, 'Good', 13500.00, 'Sedan', 'Black', 'Sold'),
 ('Honda', 'Civic', 2016, 'Blue', 76000, 'Good', 12500.00, 'Sedan', 'Gray', 'Sold'),
@@ -127,17 +118,13 @@ INSERT INTO `Vehicle` (`make`, `model`, `year`, `color`, `miles`, `condition`, `
 ('Ram', '1500', 2017, 'Silver', 60000, 'Good', 22000.00, 'Truck', 'Gray', 'Sold'),
 ('GMC', 'Sierra', 2019, 'White', 35000, 'Excellent', 28000.00, 'Truck', 'Beige', 'Sold'),
 ('Chevrolet', 'Silverado', 2016, 'Black', 70000, 'Good', 19500.00, 'Truck', 'Black', 'Sold'),
-('Ford', 'F-150', 2018, 'Blue', 50000, 'Excellent', 25000.00, 'Truck', 'Gray', 'Sold');
-
--- Additional available vehicles for inventory
-INSERT INTO `Vehicle` (`make`, `model`, `year`, `color`, `miles`, `condition`, `book_price`, `style`, `interior_color`, `status`) VALUES
+('Ford', 'F-150', 2018, 'Blue', 50000, 'Excellent', 25000.00, 'Truck', 'Gray', 'Sold'),
 ('Honda', 'Accord', 2017, 'Silver', 62000, 'Good', 15500.00, 'Sedan', 'Black', 'Available'),
 ('Toyota', 'RAV4', 2019, 'White', 35000, 'Excellent', 23000.00, 'SUV', 'Beige', 'Available'),
 ('Chevrolet', 'Equinox', 2018, 'Gray', 55000, 'Good', 16800.00, 'SUV', 'Black', 'Available'),
 ('Ford', 'Fusion', 2016, 'Blue', 78000, 'Fair', 10500.00, 'Sedan', 'Gray', 'Available'),
 ('VW', 'Jetta', 2017, 'Red', 68000, 'Good', 12500.00, 'Sedan', 'Black', 'Available');
 
--- Purchases
 INSERT INTO `Purchase` (`vehicle_id`, `buyer_id`, `seller_id`, `purchase_date`, `location`, `is_auction`, `price_paid`) VALUES
 (1, 1, 1, '2024-01-10', 'Lethbridge', 0, 12000.00),
 (2, 2, 2, '2024-02-18', 'Lethbridge', 1, 11000.00),
@@ -160,7 +147,6 @@ INSERT INTO `Purchase` (`vehicle_id`, `buyer_id`, `seller_id`, `purchase_date`, 
 (19, 16, 17, '2025-07-20', 'Lethbridge', 1, 24000.00),
 (20, 17, 18, '2025-08-25', 'Lethbridge', 0, 9000.00);
 
--- Repairs
 INSERT INTO `Repair` (`purchase_id`, `vehicle_id`, `problem_number`, `problem_description`, `estimated_repair_cost`, `actual_repair_cost`) VALUES
 (1, 1, 1, 'Front brake pads replacement', 400.00, 420.00),
 (1, 1, 2, 'Oil change and filter', 75.00, 70.00),
@@ -183,7 +169,6 @@ INSERT INTO `Repair` (`purchase_id`, `vehicle_id`, `problem_number`, `problem_de
 (19, 19, 1, 'Alternator replacement', 350.00, 360.00),
 (20, 20, 1, 'Muffler repair', 150.00, 155.00);
 
--- Sale (JonesAuto selling vehicles to customers)
 INSERT INTO `Sale` (`vehicle_id`, `customer_id`, `salesperson_id`, `sale_date`, `total_due`, `down_payment`, `financed_amount`, `sale_price`, `salesperson_commission`) VALUES
 (1, 1, 1, '2024-01-15', 15000.00, 3000.00, 12000.00, 14000.00, 700.00),
 (2, 2, 2, '2024-02-20', 13500.00, 2700.00, 10800.00, 13000.00, 650.00),
@@ -206,7 +191,6 @@ INSERT INTO `Sale` (`vehicle_id`, `customer_id`, `salesperson_id`, `sale_date`, 
 (19, 19, 19, '2025-07-22', 27500.00, 5500.00, 22000.00, 26000.00, 1300.00),
 (20, 20, 20, '2025-08-28', 10000.00, 2000.00, 8000.00, 9500.00, 475.00);
 
--- Warranty_Sale (Warranty policies sold with vehicles)
 INSERT INTO `Warranty_Sale` (`sale_id`, `policy_id`, `vehicle_id`, `customer_id`, `salesperson_id`, `warranty_sale_date`, `warranty_start_date`, `warranty_length`, `deductible`, `total_cost`, `monthly_cost`, `paid_upfront_flag`) VALUES
 (1, 1, 1, 1, 1, '2024-01-15', '2024-01-15', 36, 100.00, 599.00, 16.64, 1),
 (2, 2, 2, 2, 2, '2024-02-20', '2024-02-20', 60, 150.00, 999.00, 16.65, 1),
@@ -229,7 +213,6 @@ INSERT INTO `Warranty_Sale` (`sale_id`, `policy_id`, `vehicle_id`, `customer_id`
 (19, 3, 19, 19, 19, '2025-07-22', '2025-07-22', 36, 200.00, 1499.00, 41.64, 1),
 (20, 4, 20, 20, 20, '2025-08-28', '2025-08-28', 48, 50.00, 1999.00, 41.65, 1);
 
--- Payment
 INSERT INTO `Payment` (`customer_id`, `sale_id`, `warranty_sale_id`, `payment_date`, `due_date`, `paid_date`, `amount`, `bank_account`) VALUES
 (1, 1, 1, '2024-06-01', '2024-07-01', '2024-06-15', 2000.00, 'ACC001'),
 (2, 2, 2, '2024-07-15', '2024-08-15', '2024-07-20', 3000.00, 'ACC002'),

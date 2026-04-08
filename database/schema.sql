@@ -1,11 +1,6 @@
--- schema.sql
--- Database schema for Lethbridge JonesAuto
-
--- Create the database
 CREATE DATABASE IF NOT EXISTS `jonesauto_db`;
 USE `jonesauto_db`;
 
--- Vehicle table
 CREATE TABLE IF NOT EXISTS `Vehicle` (
     `vehicle_id` INT AUTO_INCREMENT PRIMARY KEY,
     `make` VARCHAR(50) NOT NULL,
@@ -20,7 +15,6 @@ CREATE TABLE IF NOT EXISTS `Vehicle` (
     `status` VARCHAR(20) NOT NULL
 ) ENGINE=InnoDB;
 
--- Seller table
 CREATE TABLE IF NOT EXISTS `Seller` (
     `seller_id` INT AUTO_INCREMENT PRIMARY KEY,
     `seller_name` VARCHAR(100) NOT NULL,
@@ -32,7 +26,6 @@ CREATE TABLE IF NOT EXISTS `Seller` (
     `zip` VARCHAR(15)
 ) ENGINE=InnoDB;
 
--- Buyer table
 CREATE TABLE IF NOT EXISTS `Buyer` (
     `buyer_id` INT AUTO_INCREMENT PRIMARY KEY,
     `first_name` VARCHAR(50) NOT NULL,
@@ -41,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `Buyer` (
     `email` VARCHAR(100)
 ) ENGINE=InnoDB;
 
--- Customer table
 CREATE TABLE IF NOT EXISTS `Customer` (
     `customer_id` INT AUTO_INCREMENT PRIMARY KEY,
     `first_name` VARCHAR(50) NOT NULL,
@@ -58,7 +50,6 @@ CREATE TABLE IF NOT EXISTS `Customer` (
     `average_days_late` DECIMAL(5,2) DEFAULT 0.00
 ) ENGINE=InnoDB;
 
--- Salesperson table
 CREATE TABLE IF NOT EXISTS `Salesperson` (
     `salesperson_id` INT AUTO_INCREMENT PRIMARY KEY,
     `first_name` VARCHAR(50) NOT NULL,
@@ -66,7 +57,6 @@ CREATE TABLE IF NOT EXISTS `Salesperson` (
     `phone` VARCHAR(20)
 ) ENGINE=InnoDB;
 
--- Warranty_Policy table
 CREATE TABLE IF NOT EXISTS `Warranty_Policy` (
     `policy_id` INT AUTO_INCREMENT PRIMARY KEY,
     `policy_name` VARCHAR(100) NOT NULL,
@@ -77,7 +67,6 @@ CREATE TABLE IF NOT EXISTS `Warranty_Policy` (
     `standard_deductible` DECIMAL(10,2)
 ) ENGINE=InnoDB;
 
--- Purchase table (depends on Vehicle, Buyer, Seller)
 CREATE TABLE IF NOT EXISTS `Purchase` (
     `purchase_id` INT AUTO_INCREMENT PRIMARY KEY,
     `vehicle_id` INT NOT NULL UNIQUE,
@@ -92,7 +81,6 @@ CREATE TABLE IF NOT EXISTS `Purchase` (
     FOREIGN KEY (`seller_id`) REFERENCES `Seller`(`seller_id`)
 ) ENGINE=InnoDB;
 
--- Employment_History table (depends on Customer)
 CREATE TABLE IF NOT EXISTS `Employment_History` (
     `employment_id` INT AUTO_INCREMENT PRIMARY KEY,
     `customer_id` INT NOT NULL,
@@ -105,7 +93,6 @@ CREATE TABLE IF NOT EXISTS `Employment_History` (
     FOREIGN KEY (`customer_id`) REFERENCES `Customer`(`customer_id`)
 ) ENGINE=InnoDB;
 
--- Sale table (depends on Vehicle, Customer, Salesperson)
 CREATE TABLE IF NOT EXISTS `Sale` (
     `sale_id` INT AUTO_INCREMENT PRIMARY KEY,
     `vehicle_id` INT NOT NULL UNIQUE,
@@ -122,7 +109,6 @@ CREATE TABLE IF NOT EXISTS `Sale` (
     FOREIGN KEY (`salesperson_id`) REFERENCES `Salesperson`(`salesperson_id`)
 ) ENGINE=InnoDB;
 
--- Repair table (depends on Purchase, Vehicle)
 CREATE TABLE IF NOT EXISTS `Repair` (
     `repair_id` INT AUTO_INCREMENT PRIMARY KEY,
     `purchase_id` INT NOT NULL,
@@ -135,7 +121,6 @@ CREATE TABLE IF NOT EXISTS `Repair` (
     FOREIGN KEY (`vehicle_id`) REFERENCES `Vehicle`(`vehicle_id`)
 ) ENGINE=InnoDB;
 
--- Warranty_Sale table (depends on Sale, Warranty_Policy, Vehicle, Customer, Salesperson)
 CREATE TABLE IF NOT EXISTS `Warranty_Sale` (
     `warranty_sale_id` INT AUTO_INCREMENT PRIMARY KEY,
     `sale_id` INT NOT NULL,
@@ -157,7 +142,6 @@ CREATE TABLE IF NOT EXISTS `Warranty_Sale` (
     FOREIGN KEY (`salesperson_id`) REFERENCES `Salesperson`(`salesperson_id`)
 ) ENGINE=InnoDB;
 
--- Payment table (depends on Customer, Sale, Warranty_Sale)
 CREATE TABLE IF NOT EXISTS `Payment` (
     `payment_id` INT AUTO_INCREMENT PRIMARY KEY,
     `customer_id` INT NOT NULL,
