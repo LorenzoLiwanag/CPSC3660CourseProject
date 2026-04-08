@@ -7,24 +7,6 @@
 <body>
 
 <div class="layout">
-    <aside>
-        <h2>Navigation</h2>
-        <p>Forms</p>
-        <ul>
-            <li><a href="input forms/add_vehicle.php">Add Vehicle</a></li>
-            <li><a href="input forms/purchase_vehicle.php">Record Vehicle Purchase</a></li>
-            <li><a href="input forms/sale_form.php">Record Vehicle Sale</a></li>
-            <li><a href="input forms/payment_form.php">Record Payment</a></li>
-            <li><a href="input forms/warranty_form.php">Record Warranty Sale</a></li>
-        </ul>
-        <p>Reports</p>
-        <ul>
-            <li><a href="reports/view_vehicles.php">View Vehicles</a></li>
-            <li><a href="reports/inventory_report.php">Inventory Report</a></li>
-            <li><a href="reports/sales_report.php">Sales Report</a></li>
-            <li><a href="reports/payment_report.php">Payment Report</a></li>
-        </ul>
-    </aside>
     <main>
         <div class="page-title">
             <h1>Welcome to Lethbridge Jones Auto System</h1>
