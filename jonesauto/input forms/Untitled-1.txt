@@ -1,0 +1,12 @@
+CPSC3660CourseProject/
+├── database/
+├── docs/
+├── jonesauto/
+│   ├── config.php
+│   ├── index.php
+│   ├── input forms/
+│   ├── reports/
+│   └── styles/
+├── README.md
+├── README_notes.txt
+└── PROJECT_OVERVIEW.md
